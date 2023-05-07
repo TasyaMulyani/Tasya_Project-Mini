@@ -7,16 +7,21 @@ import (
 	"fmt"
 )
 
-func CreateBook(drug *model.Drug) error {
+func CreateDrug(drug *model.Drug) error {
 
-	// check title cannot be empty
-	if drug.Title == "" {
+	// check name cannot be empty
+	if drug.Name == "" {
 		return errors.New("drug title cannot be empty")
 	}
 
-	// check creator
-	if drug.Creator == "" {
+	// check price
+	if drug.Price == "" {
 		return errors.New("drug creator cannot be empty")
+	}
+
+	// check qty
+	if drug.Stock == "" {
+		return errors.New("drug stock cannot be empty")
 	}
 
 	err := database.CreateDrug(drug)

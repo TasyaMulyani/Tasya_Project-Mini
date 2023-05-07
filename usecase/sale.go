@@ -1,10 +1,10 @@
 package usecase
 
 import (
-	"errors"
-	"fmt"
 	"Tasya_Project-Mini/model"
 	"Tasya_Project-Mini/repository/database"
+	"errors"
+	"fmt"
 )
 
 type SaleUsecase interface {
@@ -15,16 +15,21 @@ type SaleUsecase interface {
 	DeleteSale(id uint) (err error)
 }
 
-func CreateSale(sale *model.Sale error {
+func CreateSale(sale *model.Sale) error {
 
-	// check name cannot be empty
-	if sale.Title == "" {
-		return errors.New("sale title cannot be empty")
+	// check status cannot be empty
+	if sale.Status == "" {
+		return errors.New("sale status cannot be empty")
 	}
 
-	// check email
-	if sale.Content == "" {
-		return errors.New("sale content cannot be empty")
+	// check qty
+	if sale.Qty == "" {
+		return errors.New("sale qty cannot be empty")
+	}
+
+	// check pay
+	if sale.Pay == "" {
+		return errors.New("sale pay cannot be empty")
 	}
 
 	err := database.CreateSale(sale)

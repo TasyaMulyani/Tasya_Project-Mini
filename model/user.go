@@ -9,9 +9,9 @@ type User struct {
 	Name     string `json:"name" form:"name"`
 	Email    string `json:"email" form:"email"`
 	Password string `json:"password" form:"password"`
-	dob      string `json:"dob" form:"dob"`
-	gender   string `json:"gender" form:"gender"`
-	position string `json:"position" form:"position"`
+	Dob      string `json:"dob" form:"dob"`
+	Gender   string `json:"gender" form:"gender"`
+	Position string `json:"position" form:"position"`
 	Token    string `gorm:"-"`
 	Sales    []Sale
 }

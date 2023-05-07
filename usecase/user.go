@@ -30,6 +30,9 @@ func CreateUser(req *payload.CreateUserRequest) (resp payload.CreateUserResponse
 		Name:     req.Name,
 		Email:    req.Email,
 		Password: req.Password,
+		Dob:      req.Dob,
+		Gender:   req.Gender,
+		Position: req.position,
 	}
 	err = database.CreateUser(newUser)
 	if err != nil {
@@ -61,12 +64,12 @@ func GetUser(id uint) (user model.User, err error) {
 		fmt.Println("GetUser: Error getting user from database")
 		return
 	}
-	blog, err := database.GetBlogsByUserId(id)
+	sale, err := database.GetSalesByUserId(id)
 	if err != nil {
 		fmt.Println("GetUser: Error getting user from database")
 		return
 	}
-	user.Blogs = append(user.Blogs, blog)
+	user.Sales = append(user.Sales, sale)
 	return
 }
 

@@ -1,7 +1,7 @@
 package config
 
 import (
-	"apotek2/model"
+	"Tasya_Project-Mini/model"
 	"fmt"
 
 	"gorm.io/driver/mysql"
@@ -14,14 +14,14 @@ var DB *gorm.DB
 // "DB_Password": "Qoala202!",
 // "DB_Port":     "3306",
 // "DB_Host":     "altadb.c3fzsopw9aux.ap-southeast-1.rds.amazonaws.com",
-// "DB_Name":     "structure_project",
+// "DB_Name":     "apotekdb",
 func InitDB() *gorm.DB {
 	config := map[string]string{
-		"DB_Username": "alta",
-		"DB_Password": "alta",
+		"DB_Username": "apotek",
+		"DB_Password": "apotek",
 		"DB_Port":     "3306",
 		"DB_Host":     "172.20.10.2",
-		"DB_Name":     "mini_project",
+		"DB_Name":     "apotekdb",
 	}
 
 	connectionString := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
@@ -41,5 +41,5 @@ func InitDB() *gorm.DB {
 }
 
 func InitMigrate() {
-	DB.AutoMigrate(&model.User{}, &model.Book{}, &model.Blog{})
+	DB.AutoMigrate(&model.User{}, &model.Drug{}, &model.Sale{})
 }

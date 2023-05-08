@@ -32,7 +32,7 @@ func CreateUser(req *payload.CreateUserRequest) (resp payload.CreateUserResponse
 		Password: req.Password,
 		Dob:      req.Dob,
 		Gender:   req.Gender,
-		Position: req.position,
+		Position: req.Position,
 	}
 	err = database.CreateUser(newUser)
 	if err != nil {

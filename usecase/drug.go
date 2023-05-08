@@ -19,7 +19,7 @@ func CreateDrug(drug *model.Drug) error {
 		return errors.New("drug creator cannot be empty")
 	}
 
-	// check qty
+	// check stock
 	if drug.Stock == "" {
 		return errors.New("drug stock cannot be empty")
 	}

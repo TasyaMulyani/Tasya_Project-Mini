@@ -17,10 +17,10 @@ var DB *gorm.DB
 // "DB_Name":     "apotekdb",
 func InitDB() *gorm.DB {
 	config := map[string]string{
-		"DB_Username": "apotek",
-		"DB_Password": "apotek",
+		"DB_Username": "root",
+		"DB_Password": "",
 		"DB_Port":     "3306",
-		"DB_Host":     "172.20.10.2",
+		"DB_Host":     "localhost",
 		"DB_Name":     "apotekdb",
 	}
 

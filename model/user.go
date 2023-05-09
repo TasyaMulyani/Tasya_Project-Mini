@@ -14,4 +14,5 @@ type User struct {
 	Position string `json:"position" form:"position"`
 	Token    string `gorm:"-"`
 	Sales    []Sale
+	Drugs    []Drug
 }

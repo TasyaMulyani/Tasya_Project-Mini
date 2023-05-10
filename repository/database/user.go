@@ -3,6 +3,8 @@ package database
 import (
 	"Tasya_Project-Mini/config"
 	"Tasya_Project-Mini/model"
+
+	"gorm.io/gorm/clause"
 )
 
 func CreateUser(user *model.User) error {
@@ -13,7 +15,7 @@ func CreateUser(user *model.User) error {
 }
 
 func GetUsers() (users []model.User, err error) {
-	if err = config.DB.Model(&model.User{}).Preload("Blogs").Find(&users).Error; err != nil {
+	if err = config.DB.Model(&model.User{}).Preload(clause.Associations).Find(&users).Error; err != nil {
 		return
 	}
 	return
@@ -26,9 +28,9 @@ func GetUser(user *model.User) (err error) {
 	return
 }
 
-func GetUserWithBlog(id uint) (user model.User, err error) {
+func GetUserWithSale(id uint) (user model.User, err error) {
 	user.ID = id
-	if err = config.DB.Model(&model.User{}).Preload("Blogs").First(&user).Error; err != nil {
+	if err = config.DB.Model(&model.User{}).Preload("Sales").First(&user).Error; err != nil {
 		return
 	}
 	return

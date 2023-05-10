@@ -29,7 +29,7 @@ func NewRoute(e *echo.Echo, db *gorm.DB) {
 
 	// user collection
 	user := e.Group("/users")
-	user.GET("", controller.GetUserController)
+	user.GET("", controller.GetUsersController)
 	user.GET("/:id", controller.GetUserController)
 	user.POST("", controller.CreateUserController)
 	user.PUT("/:id", controller.UpdateUserController)

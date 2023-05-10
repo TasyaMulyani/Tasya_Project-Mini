@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"Tasya_Project-Mini/middleware"
 	"Tasya_Project-Mini/model"
 	"Tasya_Project-Mini/model/payload"
 	"Tasya_Project-Mini/usecase"
@@ -66,14 +65,16 @@ func CreateUserController(c echo.Context) error {
 
 // delete user by id
 func DeleteUserController(c echo.Context) error {
-	userID := middleware.ExtractTokenUserId(c)
-	if userID == 0 {
-		return c.JSON(http.StatusBadRequest, map[string]interface{}{
-			"messages":         "error delete user",
-			"errorDescription": "userId not found",
-			"errorMessage":     "Sorry Token is invalid",
-		})
-	}
+	// userID := middleware.ExtractTokenUserId(c)
+	//
+	//	if userID == 0 {
+	//		return c.JSON(http.StatusBadRequest, map[string]interface{}{
+	//			"messages":         "error delete user",
+	//			"errorDescription": "userId not found",
+	//			"errorMessage":     "Sorry Token is invalid",
+	//		})
+	//	}
+	userID, _ := strconv.ParseUint(c.Param("id"), 10, 32)
 	if err := usecase.DeleteUser(uint(userID)); err != nil {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{
 			"messages":         "error delete user",

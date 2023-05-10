@@ -52,7 +52,7 @@ func CreateSaleController(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"message": "success create new sale",
-		"blog":    sale,
+		"sale":    sale,
 	})
 }
 

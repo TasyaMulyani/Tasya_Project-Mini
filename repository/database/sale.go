@@ -3,6 +3,8 @@ package database
 import (
 	"Tasya_Project-Mini/config"
 	"Tasya_Project-Mini/model"
+
+	"gorm.io/gorm/clause"
 )
 
 func CreateSale(sale *model.Sale) error {
@@ -21,7 +23,7 @@ func GetSales() (sales []model.Sale, err error) {
 
 func GetSale(id uint) (sale model.Sale, err error) {
 	sale.ID = id
-	if err = config.DB.First(&sale).Error; err != nil {
+	if err = config.DB.Model(&model.Sale{}).Preload(clause.Associations).Find(&sale).Error; err != nil {
 		return
 	}
 	return

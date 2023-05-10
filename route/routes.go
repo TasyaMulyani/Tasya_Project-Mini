@@ -45,7 +45,7 @@ func NewRoute(e *echo.Echo, db *gorm.DB) {
 
 	// sale collection
 	sale := e.Group("/sales")
-	sale.GET("", controller.GetSaleController)
+	sale.GET("", controller.GetSalesController)
 	sale.GET("/:id", controller.GetSaleController)
 	sale.POST("", controller.CreateSaleController)
 	sale.PUT("/:id", controller.UpdateSaleController)

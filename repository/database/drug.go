@@ -15,7 +15,7 @@ func CreateDrug(drug *model.Drug) error {
 }
 
 func GetDrugs() (drugs []model.Drug, err error) {
-	if err = config.DB.Model(&model.Drug{}).Preload(clause.Associations).Find(&drugs).Error; err != nil {
+	if err = config.DB.Model(&model.User{}).Preload(clause.Associations).Find(&drugs).Error; err != nil {
 		return
 	}
 	return
